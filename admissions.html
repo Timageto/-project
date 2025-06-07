@@ -1,0 +1,591 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admissions | Greenwood International School</title>
+    <style>
+        :root {
+            --primary-color: #2c5e92;
+            --secondary-color: #4caf50;
+            --accent-color: #f8f1e5;
+            --text-color: #333;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        nav {
+            background-color: var(--primary-color);
+            padding: 10px 0;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 0;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        nav ul li a:hover, nav ul li a.active {
+            border-bottom: 2px solid white;
+        }
+        
+        .page-header {
+            background: linear-gradient(rgba(44, 94, 146, 0.8), rgba(44, 94, 146, 0.8)), url('admissions-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            margin-bottom: 40px;
+        }
+        
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .admissions-intro {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 40px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .admissions-intro h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .process-steps {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 40px 0;
+            justify-content: center;
+        }
+        
+        .step-card {
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            position: relative;
+            transition: transform 0.3s;
+        }
+        
+        .step-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .step-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .step-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .requirements {
+            background-color: var(--accent-color);
+            padding: 40px;
+            border-radius: 8px;
+            margin: 40px 0;
+        }
+        
+        .requirements h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .req-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .req-card {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .req-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .req-icon {
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+        }
+        
+        .req-card ul {
+            padding-left: 20px;
+        }
+        
+        .req-card li {
+            margin-bottom: 8px;
+        }
+        
+        .age-guidelines {
+            margin: 40px 0;
+        }
+        
+        .age-guidelines h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: white;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .scholarships {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .scholarships h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .scholarship-card {
+            background-color: var(--accent-color);
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .scholarship-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .scholarship-card p {
+            margin-bottom: 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+        
+        .btn:hover {
+            background-color: #3e8e41;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            margin-left: 15px;
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .cta-section {
+            text-align: center;
+            margin: 60px 0;
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        
+        .quick-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .quick-links a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 5px 0;
+            }
+            
+            .page-header {
+                padding: 60px 20px;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 15px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  
+    <header>
+        <div class="container">
+            <h1>Greenwood International School</h1>
+            <p>Excellence in Education Since 1995</p>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="academics.html">Academics</a></li>
+                <li><a href="admissions.html" class="active">Admissions</a></li>
+                <li><a href="fees.html">Fee Structure</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <section class="page-header">
+        <div class="container">
+            <h1>Join Our Learning Community</h1>
+            <p>Begin your journey at Greenwood International School today</p>
+        </div>
+    </section>
+    
+    <div class="container">
+        <section class="admissions-intro">
+            <h2>Admissions Process</h2>
+            <p>We're delighted you're considering Greenwood International School for your child's education. Our admissions process is designed to be transparent, straightforward, and supportive as we get to know your family and your child's unique potential.</p>
+        </section>
+        
+        <section>
+            <h2 style="text-align: center; color: var(--primary-color); margin-bottom: 30px;">Our 5-Step Admission Process</h2>
+            <div class="process-steps">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>Application Submission</h3>
+                    <p>Complete our online application form and submit required documents. Our admissions team will review your submission within 5 business days.</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">
+                        <i class="fas fa-school"></i>
+                    </div>
+                    <h3>Campus Tour</h3>
+                    <p>Schedule a personalized campus tour to experience our facilities and meet our faculty. Virtual tours also available.</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">
+                        <i class="fas fa-user-edit"></i>
+                    </div>
+                    <h3>Student Assessment</h3>
+                    <p>Age-appropriate assessments help us understand your child's academic level and learning needs.</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <div class="step-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Family Interview</h3>
+                    <p>A conversation with our admissions team to ensure Greenwood is the right fit for your family's values and goals.</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">5</div>
+                    <div class="step-icon">
+                        <i class="fas fa-envelope-open-text"></i>
+                    </div>
+                    <h3>Admission Decision</h3>
+                    <p>Receive notification of admission status within 10 business days of completing all steps.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="requirements">
+            <h2><i class="fas fa-clipboard-list"></i> Admission Requirements</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 30px;">To ensure a smooth application process, please review and prepare the following documents:</p>
+            
+            <div class="req-grid">
+                <div class="req-card">
+                    <h3><i class="fas fa-user-graduate req-icon"></i> For All Applicants</h3>
+                    <ul>
+                        <li>Completed application form</li>
+                        <li>Birth certificate (original + copy)</li>
+                        <li>2 passport-sized photographs</li>
+                        <li>Previous 2 years academic records</li>
+                        <li>Medical immunization records</li>
+                    </ul>
+                </div>
+                
+                <div class="req-card">
+                    <h3><i class="fas fa-exchange-alt req-icon"></i> Transfer Students</h3>
+                    <ul>
+                        <li>Official transcripts from current school</li>
+                        <li>Transfer certificate (original)</li>
+                        <li>Disciplinary records (if applicable)</li>
+                        <li>Special needs documentation (if applicable)</li>
+                        <li>Teacher recommendations (2 required)</li>
+                    </ul>
+                </div>
+                
+                <div class="req-card">
+                    <h3><i class="fas fa-globe req-icon"></i> International Students</h3>
+                    <ul>
+                        <li>Passport copy</li>
+                        <li>Student visa documentation</li>
+                        <li>English proficiency test results</li>
+                        <li>Notarized translation of academic records</li>
+                        <li>Guardian information (if applicable)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section class="age-guidelines">
+            <h2><i class="fas fa-child"></i> Age Guidelines for Admission</h2>
+            <p style="text-align: center; margin-bottom: 20px;">Our grade placement follows these age cutoffs as of September 1st:</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Grade Level</th>
+                        <th>Minimum Age</th>
+                        <th>Typical Birth Year Range</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Pre-Kindergarten</td>
+                        <td>3 years</td>
+                        <td>2020</td>
+                    </tr>
+                    <tr>
+                        <td>Kindergarten</td>
+                        <td>4 years</td>
+                        <td>2019</td>
+                    </tr>
+                    <tr>
+                        <td>Grade 1</td>
+                        <td>5 years</td>
+                        <td>2018</td>
+                    </tr>
+                    <tr>
+                        <td>Grade 2</td>
+                        <td>6 years</td>
+                        <td>2017</td>
+                    </tr>
+                    <tr>
+                        <td>Grade 3</td>
+                        <td>7 years</td>
+                        <td>2016</td>
+                    </tr>
+                    <tr>
+                        <td>Grade 4</td>
+                        <td>8 years</td>
+                        <td>2015</td>
+                    </tr>
+                    <tr>
+                        <td>Grade 5</td>
+                        <td>9 years</td>
+                        <td>2014</td>
+                    </tr>
+                    <tr>
+                        <td>Grade 6</td>
+                        <td>10 years</td>
+                        <td>2013</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <p style="text-align: center; margin-top: 20px; font-style: italic;">*Age exceptions may be considered based on developmental readiness assessments</p>
+        </section>
+        
+        <section class="scholarships">
+            <h2><i class="fas fa-award"></i> Scholarships & Financial Aid</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 30px;">Greenwood International School offers several scholarship opportunities to recognize and support outstanding students:</p>
+            
+            <div class="scholarship-card">
+                <h3>Academic Excellence Scholarship</h3>
+                <p><strong>Eligibility:</strong> Top 5% of applicants based on entrance assessment</p>
+                <p><strong>Award:</strong> Up to 50% tuition waiver for first year, renewable based on performance</p>
+                <p><strong>Deadline:</strong> March 31 for following academic year</p>
+            </div>
+            
+            <div class="scholarship-card">
+                <h3>Arts & Talent Scholarships</h3>
+                <p><strong>Eligibility:</strong> Demonstrated excellence in visual arts, music, dance, or theater</p>
+                <p><strong>Award:</strong> 25-40% tuition waiver</p>
+                <p><strong>Requirements:</strong> Portfolio review or audition</p>
+            </div>
+            
+            <div class="scholarship-card">
+                <h3>Sports Scholarships</h3>
+                <p><strong>Eligibility:</strong> Competitive athletes in school-sponsored sports</p>
+                <p><strong>Award:</strong> 20-35% tuition waiver</p>
+                <p><strong>Requirements:</strong> Tryouts and coach recommendations</p>
+            </div>
+            
+            <div class="scholarship-card">
+                <h3>Need-Based Financial Aid</h3>
+                <p><strong>Eligibility:</strong> Families demonstrating financial need</p>
+                <p><strong>Award:</strong> Variable based on need assessment</p>
+                <p><strong>Requirements:</strong> Complete financial disclosure forms</p>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="fees.html" class="btn">View Fee Structure</a>
+                <a href="contact.html" class="btn btn-outline">Contact Financial Aid Office</a>
+            </div>
+        </section>
+        
+        <section class="cta-section">
+            <h2 style="color: var(--primary-color);">Ready to Begin Your Greenwood Journey?</h2>
+            <p>Our admissions team is here to guide you through every step of the process</p>
+            <div style="margin-top: 30px;">
+                <a href="#" class="btn" style="padding: 12px 30px;"><i class="fas fa-edit"></i> Apply Online</a>
+                <a href="contact.html" class="btn btn-outline" style="padding: 12px 30px;"><i class="fas fa-calendar-alt"></i> Schedule a Visit</a>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <div class="quick-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="academics.html">Academics</a>
+                <a href="admissions.html">Admissions</a>
+                <a href="fees.html">Fee Structure</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <p>&copy; 2023 Greenwood International School. All Rights Reserved.</p>
+            <p>123 Education Road, Knowledge City, State - 560001 | Phone: +91 80 1234 5678</p>
+        </div>
+    </footer>
+</body>
+</html>
